@@ -129,30 +129,25 @@
 			<groupId>org.kie.remote</groupId>
 			<artifactId>kie-services-client</artifactId>
 			<version>${droolsjbpm.version}</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-api</artifactId>
 			<version>${droolsjbpm.version}</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.kie</groupId>
 			<artifactId>kie-internal</artifactId>
 			<version>${droolsjbpm.version}</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.drools</groupId>
 			<artifactId>drools-core</artifactId>
 			<version>${droolsjbpm.version}</version>
-			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<scope>runtime</scope>
 		</dependency>
     	
   </dependencies>
@@ -192,11 +187,9 @@
 	     	 WEB-INF/lib/hibernate*.jar,
 	     	 WEB-INF/lib/hornet*.jar,
 	     	 WEB-INF/lib/httpserver-1.0.1.Final-redhat-2.jar,
-	     	 WEB-INF/lib/httpclient-4.2.1-redhat-1.jar,
-	     	 WEB-INF/lib/httpcore-4.2.1-redhat-1.jar,
+	     	 WEB-INF/lib/httpc*.jar,
 	     	 WEB-INF/lib/i*.jar,
-	     	 WEB-INF/lib/jboss*.jar,
-	     	 WEB-INF/lib/jbpm*.jar,
+	     	 WEB-INF/lib/j*.jar,
 	     	 WEB-INF/lib/l*.jar,
 	     	 WEB-INF/lib/m*.jar,
 	     	 WEB-INF/lib/n*.jar,
@@ -217,9 +210,11 @@
 	           <targetPath>WEB-INF</targetPath>
 	           <includes>
 	             <include>switchyard.xml</include>
+	             <include>jboss-deployment-structure.xml</include>
 	           </includes>
 	        </resource>
 	     </webResources>
+	     
 	   </configuration>
 	 </plugin>
 	 
@@ -227,8 +222,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.7</source>
+          <target>1.7</target>
           <debug>true</debug>
           <showWarnings>true</showWarnings>
           <showDeprecation>true</showDeprecation>
