@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<HouseHoldContractRequest>
+    <Personendaten>
+        <adresse1>Kolberger Strasse</adresse1>
+        <bic>BIC</bic>
+        <email>psteiner@redhat.com</email>
+        <geburtsdatum>2014-07-31T15:18:36.672+02:00</geburtsdatum>
+        <iban>IBAN</iban>
+        <nachname>Steiner</nachname>
+        <ort>Buchholz</ort>
+        <plz>21244</plz>
+    </Personendaten>
+    <VersichertesObjekt>
+        <adresse1>Kolberger Strasse</adresse1>
+        <haustyp>efh</haustyp>
+        <ort>Buchholz</ort>
+        <plz>21244</plz>
+        <vertragsbeginn>2014-07-31T15:18:36.672+02:00</vertragsbeginn>
+        <wohnflaeche>200</wohnflaeche>
+    </VersichertesObjekt>
+    <Vertrag>
+        <amount>0.0</amount>
+        <rabatt>0</rabatt>
+        <type>Premium</type>
+        <vertriebskanal></vertriebskanal>
+    </Vertrag>
+</HouseHoldContractRequest>
