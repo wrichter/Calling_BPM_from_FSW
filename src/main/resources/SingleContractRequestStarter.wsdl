@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SingleContractRequestStarter" targetNamespace="urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0">
+  <xs:element name="HouseHoldContractRequest" type="tns:houseHoldContractRequest"/>
+  <xs:complexType name="houseHoldContractRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Personendaten" type="tns:personendaten"/>
+      <xs:element minOccurs="0" name="VersichertesObjekt" type="tns:versichertesObjekt"/>
+      <xs:element minOccurs="0" name="Vertrag" type="tns:vertrag"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="personendaten">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="adresse1" type="xs:string"/>
+      <xs:element minOccurs="0" name="bic" type="xs:string"/>
+      <xs:element minOccurs="0" name="email" type="xs:string"/>
+      <xs:element minOccurs="0" name="geburtsdatum" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="iban" type="xs:string"/>
+      <xs:element minOccurs="0" name="nachname" type="xs:string"/>
+      <xs:element minOccurs="0" name="ort" type="xs:string"/>
+      <xs:element minOccurs="0" name="plz" type="xs:int"/>
+      <xs:element minOccurs="0" name="rolle" type="xs:string"/>
+      <xs:element minOccurs="0" name="telefon" type="xs:string"/>
+      <xs:element minOccurs="0" name="vorname" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="versichertesObjekt">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="adresse1" type="xs:string"/>
+      <xs:element minOccurs="0" name="haustyp" type="xs:string"/>
+      <xs:element minOccurs="0" name="ort" type="xs:string"/>
+      <xs:element minOccurs="0" name="plz" type="xs:int"/>
+      <xs:element minOccurs="0" name="vertragsbeginn" type="xs:dateTime"/>
+      <xs:element minOccurs="0" name="wohnflaeche" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="vertrag">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="amount" type="xs:double"/>
+      <xs:element minOccurs="0" name="rabatt" type="xs:int"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+      <xs:element minOccurs="0" name="vertriebskanal" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="startProcess" type="tns:startProcess"/>
+  <xs:complexType name="startProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="houseHoldContractRequest" type="tns:houseHoldContractRequest"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="startProcess">
+    <wsdl:part name="parameters" element="tns:startProcess">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SingleContractRequestStarterPortType">
+    <wsdl:operation name="startProcess">
+      <wsdl:input name="startProcess" message="tns:startProcess">
+    </wsdl:input>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SingleContractRequestStarterSoapBinding" type="tns:SingleContractRequestStarterPortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="startProcess">
+      <soap:operation soapAction="startProcess" style="document"/>
+      <wsdl:input name="startProcess">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SingleContractRequestStarter">
+    <wsdl:port name="SingleContractRequestStarterPort" binding="tns:SingleContractRequestStarterSoapBinding">
+      <soap:address location="http://localhost:8080/HeiseDemoBatchStarter/SingleContractRequestStarter"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

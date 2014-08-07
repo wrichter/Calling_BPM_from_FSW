@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sy:switchyard xmlns:bean="urn:switchyard-component-bean:config:1.1" xmlns:file="urn:switchyard-component-camel-file:config:1.1" xmlns:sca="http://docs.oasis-open.org/ns/opencsa/sca/200912" xmlns:sy="urn:switchyard-config:switchyard:1.1" xmlns:tr="urn:switchyard-config:transform:1.1" name="HeiseDemoBatchStarter" targetNamespace="urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0">
+  <sca:composite name="HeiseDemoBatchStarter" targetNamespace="urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0">
+    <sca:component name="SingleContractRequestStarterBean">
+      <bean:implementation.bean class="com.redhat.demo.heisedemo.HeiseDemoBatchStarter.SingleContractRequestStarterBean"/>
+      <sca:service name="SingleContractRequestStarter">
+        <sca:interface.java interface="com.redhat.demo.heisedemo.HeiseDemoBatchStarter.SingleContractRequestStarter"/>
+      </sca:service>
+    </sca:component>
+    <sca:service name="SingleContractRequestStarterPortType" promote="SingleContractRequestStarterBean/SingleContractRequestStarter">
+      <sca:interface.wsdl interface="SingleContractRequestStarter.wsdl#wsdl.porttype(SingleContractRequestStarterPortType)"/>
+      <file:binding.file name="file1">
+        <sy:operationSelector operationName="startProcess"/>
+        <file:directory>/tmp/input</file:directory>
+        <file:fileName>message.xml</file:fileName>
+        <file:consume/>
+      </file:binding.file>
+    </sca:service>
+  </sca:composite>
+  <sy:transforms>
+    <tr:transform.jaxb from="{urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0}HouseHoldContractRequest" to="java:com.redhat.demo.heisedemo.HeiseDemoBatchStarter.HouseHoldContractRequest" contextPath="com.redhat.demo.heisedemo.HeiseDemoBatchStarter"/>
+    <tr:transform.jaxb from="{urn:com.redhat.demo.heisedemo:HeiseDemoBatchStarter:1.0}startProcess" to="java:com.redhat.demo.heisedemo.HeiseDemoBatchStarter.HouseHoldContractRequest"/>
+  </sy:transforms>
+  <sy:domain>
+    <sy:properties>
+      <sy:property name="org.switchyard.handlers.messageTrace.enabled" value="false"/>
+    </sy:properties>
+  </sy:domain>
+</sy:switchyard>
