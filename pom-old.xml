@@ -14,7 +14,7 @@
   </properties>
   
   
-    <dependencyManagement>
+  <dependencyManagement>
     <dependencies>
       <!-- IP BOM -->
       <dependency>
@@ -38,12 +38,6 @@
   
   
   <dependencies>
-  <dependency>
-	<groupId>dom4j</groupId>
-	<artifactId>dom4j</artifactId>
-</dependency>
-  
-  
     <dependency>
       <groupId>org.switchyard.components</groupId>
       <artifactId>switchyard-component-bean</artifactId>
@@ -111,11 +105,12 @@
       <version>${switchyard.version}</version>
     </dependency>
 
+<!-- 
 	<dependency>
 		<groupId>org.apache.httpcomponents</groupId>
 		<artifactId>httpclient</artifactId>
 		<version>4.2.1</version>
-	</dependency>
+	</dependency>-->
  
     <dependency>
       <groupId>org.switchyard</groupId>
@@ -150,10 +145,12 @@
 			<groupId>org.drools</groupId>
 			<artifactId>drools-core</artifactId>
 			<version>${droolsjbpm.version}</version>
+			<scope>runtime</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
+			<scope>runtime</scope>
 		</dependency>
     	
   </dependencies>
@@ -185,8 +182,7 @@
 	     	 WEB-INF/lib/a*.jar,
 	     	 WEB-INF/lib/b*.jar,
 	     	 WEB-INF/lib/c*.jar,
-	     	 WEB-INF/lib/de*.jar,
-	     	 WEB-INF/lib/dr*.jar,
+	     	 WEB-INF/lib/d*.jar,
 	     	 WEB-INF/lib/e*.jar,
 	     	 WEB-INF/lib/f*.jar,
 	     	 WEB-INF/lib/g*.jar,
@@ -194,9 +190,9 @@
 	     	 WEB-INF/lib/hibernate*.jar,
 	     	 WEB-INF/lib/hornet*.jar,
 	     	 WEB-INF/lib/httpserver-1.0.1.Final-redhat-2.jar,
-	     	 WEB-INF/lib/httpc*.jar,
 	     	 WEB-INF/lib/i*.jar,
-	     	 WEB-INF/lib/j*.jar,
+	     	 WEB-INF/lib/jboss*.jar,
+	     	 WEB-INF/lib/jbpm*.jar,
 	     	 WEB-INF/lib/l*.jar,
 	     	 WEB-INF/lib/m*.jar,
 	     	 WEB-INF/lib/n*.jar,
@@ -209,7 +205,8 @@
 	     	 WEB-INF/lib/v*.jar,
 	     	 WEB-INF/lib/w*.jar,
 	     	 WEB-INF/lib/x*.jar,
-	     	 WEB-INF/classes/META-INF/switchyard.xml
+	     	 WEB-INF/classes/META-INF/switchyard.xml,
+	     	 WEB-INF/classes/META-INF/jboss-deployment-structure.xml
 	     </packagingExcludes>
 	     <webResources>
 	        <resource>
@@ -217,11 +214,14 @@
 	           <targetPath>WEB-INF</targetPath>
 	           <includes>
 	             <include>switchyard.xml</include>
+	        
 	             <include>jboss-deployment-structure.xml</include>
 	           </includes>
 	        </resource>
 	     </webResources>
-	     
+	     <manifestEntries>
+	     	<Dependencies>org.jboss.resteasy.resteasy-jaxrs export services,org.jboss.resteasy.resteasy-jaxb-provider, org.jboss.resteasy.resteasyjackson-provider,org.apache.httpcomponents export services</Dependencies>
+	     </manifestEntries>
 	   </configuration>
 	 </plugin>
 	 
